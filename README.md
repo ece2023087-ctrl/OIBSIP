@@ -196,3 +196,276 @@ This BMI calculator is intended for **educational and informational purposes onl
 ## License
 
 This project is open source and available under the **MIT License**.
+# Weather App 🌤️
+
+A simple desktop **Weather Application** built with **Python, Tkinter, and OpenWeatherMap API**. The application allows users to search for a city, select it from autocomplete suggestions, and view its current weather information.
+
+## Features
+
+* 🌍 Search for cities from a predefined city list.
+* 🔎 Real-time city autocomplete suggestions.
+* 🌡️ Displays temperature in:
+
+  * Celsius (°C)
+  * Fahrenheit (°F)
+* 💧 Displays humidity.
+* ☁️ Displays current weather condition.
+* 💨 Displays wind speed.
+* 📊 Displays atmospheric pressure.
+* 🌎 Displays the city and country code.
+* ⚠️ Handles API and data-format errors.
+* 🖥️ Simple and lightweight Tkinter graphical interface.
+
+## Technologies Used
+
+* **Python 3**
+* **Tkinter** – GUI development
+* **ttk** – Combobox widget
+* **Requests** – HTTP/API requests
+* **OpenWeatherMap API** – Weather data
+
+## How It Works
+
+The application uses the OpenWeatherMap current weather API to retrieve weather information for the selected city.
+
+The user enters a city name into the search box. As they type, matching cities from the predefined list are displayed in a listbox.
+
+After selecting a city, the user clicks **Get Weather**. The application sends a request to the OpenWeatherMap API and displays the returned weather information.
+
+## Weather Information
+
+The application displays:
+
+| Information       | Description                      |
+| ----------------- | -------------------------------- |
+| City              | Selected city and country code   |
+| Temperature       | Current temperature in °C and °F |
+| Humidity          | Relative humidity percentage     |
+| Weather Condition | Current weather description      |
+| Wind Speed        | Wind speed in meters per second  |
+| Pressure          | Atmospheric pressure in hPa      |
+
+## Temperature Conversion
+
+OpenWeatherMap returns temperature in **Kelvin** in this application.
+
+### Kelvin to Celsius
+
+```text
+Celsius = Kelvin - 273.15
+```
+
+### Kelvin to Fahrenheit
+
+```text
+Fahrenheit = (Kelvin - 273.15) × 9/5 + 32
+```
+
+## Requirements
+
+Make sure **Python 3** is installed.
+
+Install the required `requests` package:
+
+```bash
+pip install requests
+```
+
+On some systems:
+
+```bash
+pip3 install requests
+```
+
+Tkinter is normally included with Python. On some Linux distributions, you may need to install it separately.
+
+## API Key
+
+This project uses the **OpenWeatherMap API**.
+
+You need an API key to retrieve weather data.
+
+Create an account on OpenWeatherMap and obtain your API key.
+
+Then store the key in your Python program:
+
+```python
+api_key = "YOUR_API_KEY"
+```
+
+### ⚠️ Security Note
+
+**Do not upload your actual API key to GitHub.**
+
+Instead, use an environment variable.
+
+For example:
+
+```python
+import os
+
+api_key = os.getenv("OPENWEATHER_API_KEY")
+```
+
+Then configure the environment variable on your computer.
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/weather-app.git
+```
+
+### 2. Enter the project directory
+
+```bash
+cd weather-app
+```
+
+### 3. Install dependencies
+
+```bash
+pip install requests
+```
+
+### 4. Add your API key
+
+Set your OpenWeatherMap API key using an environment variable or configure it locally in the Python file.
+
+### 5. Run the application
+
+```bash
+python weather_app.py
+```
+
+On some systems:
+
+```bash
+python3 weather_app.py
+```
+
+## Project Structure
+
+```text
+weather-app/
+│
+├── weather_app.py
+├── README.md
+└── .gitignore
+```
+
+## Usage
+
+1. Launch the application.
+2. Click inside the city search box.
+3. Start typing a city name.
+4. Matching cities will appear below the search box.
+5. Select the desired city.
+6. Click **Get Weather**.
+7. The current weather information will appear in the application.
+
+### Example Output
+
+```text
+City: Chennai, IN
+Temperature: 30.45 °C / 86.81 °F
+Humidity: 72%
+Weather Condition: scattered clouds
+Wind Speed: 4.12 m/s
+Pressure: 1008 hPa
+```
+
+The actual values will change according to the current weather conditions.
+
+## Error Handling
+
+The application handles common API-related errors using Python's `requests` exception handling.
+
+If the API request fails, an error message is displayed:
+
+```text
+Error: ...
+```
+
+The application also handles unexpected API response formats:
+
+```text
+Error: Data format incorrect, please try again.
+```
+
+## Autocomplete Search
+
+The application provides a simple autocomplete feature.
+
+When the user types a city name, the program searches the predefined `cities` list:
+
+```python
+matches = [city for city in cities if value.lower() in city.lower()]
+```
+
+Matching cities are then displayed in the listbox.
+
+For example, entering:
+
+```text
+chen
+```
+
+can display:
+
+```text
+Chennai
+```
+
+## Future Improvements
+
+Some possible improvements for future versions:
+
+* 📍 Automatically detect the user's location.
+* 🗺️ Add interactive maps.
+* 📅 Add a 5-day weather forecast.
+* 🌙 Add dark mode.
+* 🎨 Improve the graphical interface.
+* 🌡️ Allow users to switch between Celsius and Fahrenheit.
+* 🔄 Add a refresh button.
+* 🕐 Display sunrise and sunset times.
+* 🌧️ Add weather icons.
+* 💾 Save recently searched cities.
+* 🔐 Store the API key securely using environment variables.
+* 📱 Create a responsive or mobile version.
+
+## Security
+
+Never commit your API key directly to a public GitHub repository.
+
+A `.gitignore` file can be used to prevent local configuration files from being uploaded:
+
+```text
+.env
+__pycache__/
+*.pyc
+```
+
+If you use a `.env` file, you can store your API key like this:
+
+```text
+OPENWEATHER_API_KEY=your_api_key_here
+```
+
+## Screenshot
+
+Add a screenshot of your application to the repository and include it in the README:
+
+```markdown
+![Weather App Screenshot](screenshot.png)
+```
+
+## Disclaimer
+
+Weather information is provided through the OpenWeatherMap API. Weather conditions and measurements may change frequently, and the application should not be considered a source for emergency weather information.
+
+## License
+
+This project is open source and available under the **MIT License**.
+
